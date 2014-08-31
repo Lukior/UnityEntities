@@ -17,6 +17,13 @@ public class Entity : MonoBehaviour
 	protected AttributeMechanic[] Attributes;
 
 	/// <summary>
+	///         The state machines running this
+	///         entity.
+	/// </summary>
+	[SerializeField]
+	protected MooreMachine[] StateMachines;
+
+	/// <summary>
 	///         Adds an attribute to this entity.
 	/// </summary>
 	/// <typeparam name="T">
