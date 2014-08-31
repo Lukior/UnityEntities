@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 ///         This will manage a generic attribute,
 ///         which is a value with its notifiers
 ///         and range.
 /// </summary>
+[Serializable]
 public abstract class AttributeMechanic : MonoBehaviour
 {
 	#region Notifications
@@ -32,7 +34,10 @@ public abstract class AttributeMechanic : MonoBehaviour
 	protected virtual void CallOnSet(float newvalue)
 	{
 		var handler = OnSet;
-		if (handler != null) handler(newvalue);
+		if (handler != null)
+		{
+			handler(newvalue);
+		}
 	}
 
 	#endregion Notifications
@@ -68,7 +73,10 @@ public abstract class AttributeMechanic : MonoBehaviour
 	/// </summary>
 	public virtual float Value
 	{
-		get { return AttributeValue; }
+		get
+		{
+			return AttributeValue;
+		}
 		set
 		{
 			AttributeValue = Mathf.Clamp(MinimumValue, MaximumValue, value);
@@ -83,7 +91,10 @@ public abstract class AttributeMechanic : MonoBehaviour
 	/// </summary>
 	public virtual float NormalizedValue
 	{
-		get { return Mathf.InverseLerp(MinimumValue, MaximumValue, AttributeValue); }
+		get
+		{
+			return Mathf.InverseLerp(MinimumValue, MaximumValue, AttributeValue);
+		}
 		set
 		{
 			AttributeValue = Mathf.Lerp(MinimumValue, MaximumValue, Mathf.Clamp01(value));
