@@ -67,8 +67,8 @@ public class EntityEditor : Editor
 			}
 
 			EditorGUILayout.BeginHorizontal();
-			ShowAttributes[i] = EditorGUILayout.ToggleLeft(attribute.GetType().Name
-				, ShowAttributes[i]);
+			ShowAttributes[i] = EditorGUILayout.Foldout(ShowAttributes[i]
+				, attribute.GetType().Name);
 			RemoveAttributeButton(attribute);
 			EditorGUILayout.EndHorizontal();
 
